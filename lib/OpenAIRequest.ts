@@ -15,10 +15,14 @@ export async function OpenAIRequest(payload: OpenAIRequestPayload) {
   });
 
   if (!res.ok) {
+    // convert the res to a string and return the error
+    return res.text();
     throw new Error("Error in OpenAI API request");
   }
 
   const data = await res.json();
+  console.log(data);
   const text = data.choices[0].message.content;
+  console.log(data.choices[0].message.content);
   return text;
 }

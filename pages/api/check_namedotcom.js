@@ -1,4 +1,4 @@
-// Filename: pages/api/check_domains.js
+// Filename: pages/api/check_namedotcom.js
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -6,26 +6,28 @@ import { NextApiRequest, NextApiResponse } from "next";
 import dotenv from "dotenv";
 dotenv.config();
 
-const godaddy_api_url = process.env.GODADDY_PROD_API_URL;
-const godaddy_api_key = process.env.GODADDY_PROD_API_KEY;
-const godaddy_api_secret = process.env.GODADDY_PROD_API_SECRET;
+const namedotcom_api_url = process.env.NAME_DOTCOM_PROD_API_URL;
+const namedotcom_api_key = process.env.NAME_DOTCOM_PROD_API_KEY;
 
 async function checkDomainAvailability(domains) {
   try {
     const response = await axios({
       method: "post",
-      url: godaddy_api_url + "/v1/domains/available?checkType=FULL",
+      url: namedotcom_api_url + "/v4/domains:checkAvailability",
       headers: {
-        "Accept": "application/json",
         "Content-Type": "application/json",
-        "Authorization":
-          "sso-key " + godaddy_api_key + ":" + godaddy_api_secret,
       },
-      data: domains,
+      auth: {
+        username: "peter@speaktolearn.us",
+        password: namedotcom_api_key,
+      },
+      data: {
+        domainNames: domains,
+      },
     });
 
-    const available = response.data.domains.filter(
-      (domain) => domain.available
+    const available = response.data.results.filter(
+      (domain) => domain.purchasable
     );
     return available;
   } catch (error) {
