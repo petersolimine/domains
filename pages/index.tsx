@@ -153,7 +153,9 @@ export default function Home() {
         "\nGood example(s) to consider: " + similarDomainChips.join(", ");
     }
     if (tldChips.length !== 0) {
-      compound_prompt += "\nAcceptable TLDs: " + tldChips.join(", ");
+      compound_prompt +=
+        "Here's a list of Domain endings (aka TLDs) that the user likes: " +
+        tldChips.join(", ");
     }
     if (customInstructions.length !== 0) {
       // first, remove every '.' from the custom instructions
@@ -196,7 +198,7 @@ export default function Home() {
       toast.error("Something went wrong on our end.. Please retry!");
       return;
     }
-    const domains_from_godaddy = await checkAvailability(domains);
+    const domains_from_godaddy = await checkGodaddyAvailability(domains);
     setGodaddyDomains(domains_from_godaddy.available);
     setLoading(false);
   };
@@ -235,8 +237,33 @@ export default function Home() {
     return domains;
   }
 
-  const checkAvailability = async (domains: Array<string>) => {
+  const checkGodaddyAvailability = async (domains: Array<string>) => {
     const response = await fetch("/api/check_godaddy", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        domains: domains,
+      }),
+    });
+
+    if (!response.ok) {
+      console.error(response.statusText);
+      toast.error(`Something went wrong. 😢 ${response.status}`);
+    }
+
+    // Read the response body as text
+    const data = await response.json();
+
+    if (!data) {
+      setLoading(false);
+      return;
+    }
+    return data;
+  };
+  const checkNameDotcom = async (domains: Array<string>) => {
+    const response = await fetch("/api/check_namedotcom", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -272,7 +299,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/search.svg" />
       </Head>
-      <div className="bg-gradient-to-r from-cyan-100 to-blue-200 bg-opacity-100 min-h-screen">
+      <div className="bg-gradient-to-r from-cyan-500 to-blue-200 bg-opacity-100 min-h-screen">
         <div className="min-h-screen flex justify-center items-center flex-col">
           <div className="flex flex-row items-center space-x-3">
             <Image src="/search.svg" alt="Search" width={90} height={90} />
@@ -297,7 +324,7 @@ export default function Home() {
               ></textarea>
 
               <button
-                className="absolute -bottom-4 right-0 text-blue-400 underline cursor-pointer text-sm font-medium"
+                className="absolute -bottom-4 right-0 text-blue-600 underline cursor-pointer text-sm font-medium"
                 onClick={() => {
                   setShowAdvanced(!showAdvanced);
                 }}
@@ -366,7 +393,7 @@ export default function Home() {
               <ListItem
                 key={index}
                 domain={data.domain}
-                price={data.price}
+
                 // purchaseOptions={data.purchaseOptions}
               />
             ))}
