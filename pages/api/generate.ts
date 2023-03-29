@@ -12,6 +12,8 @@ const prompt_postfix =
   "\nRemember, you are to generate no output other than the numbered list of domains.";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  req.setTimeout(1 * 60 * 1000);
+
   const { prompt } = req.body;
 
   if (!prompt) {
