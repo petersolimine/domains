@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/generate.ts": {
+    "pages/api/generate.ts": {
       "maxDuration": 20
     }
   }
