@@ -84,7 +84,7 @@ const GodaddyListItem = ({ domain, price }) => {
                       className="flex items-center w-full"
                     >
                       <button className="bg-gradient-to-r from-cyan-400 to-blue-400 text-white px-5 py-2 rounded-md hover:from-cyan-500 hover:to-blue-500 transition-colors duration-200 mr-4">
-                        Buy Now
+                        Make it Yours
                       </button>
                       <span className="font-semibold text-gray-600 flex-grow">
                         ${option.price}
