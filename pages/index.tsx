@@ -214,11 +214,11 @@ export default function Home() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Find the perfect Domain in seconds"
+          content="Find the perfect domain in seconds 🚀"
         />
         <meta
           name="twitter:description"
-          content="Finding domains has never been easier."
+          content="Stop wasting time searching for domains. Let AI do the work for you."
         />
         <meta
           name="twitter:image"
