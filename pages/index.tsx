@@ -212,7 +212,10 @@ export default function Home() {
         />
         <meta property="og:url" content="https://www.domaingarden.io/" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="DomainGarden.io, Find a Domain" />
+        <meta
+          name="twitter:title"
+          content="Find the perfect Domain in seconds"
+        />
         <meta
           name="twitter:description"
           content="Finding domains has never been easier."
@@ -221,6 +224,8 @@ export default function Home() {
           name="twitter:image"
           content="https://www.domaingarden.io/twitter_card.png"
         />
+        <meta name="twitter:site" content="@peterthedecent" />
+        <meta name="twitter:creator" content="@peterthedecent" />
       </Head>
       <div className="px-2">
         <div className="min-h-screen flex justify-center items-center flex-col">
