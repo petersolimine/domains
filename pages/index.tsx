@@ -9,6 +9,11 @@ import { TLD_PRESETS, CUSTOM_INSTRUCTIONS_PRESETS } from "../lib/Constants";
 
 import Footer from "../components/Footer";
 
+interface DomainData {
+  domain: string;
+  price: number;
+}
+
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [prompt, setPrompt] = useState("");
@@ -19,7 +24,7 @@ export default function Home() {
   const [tldChips, setTldChips] = useState<string[]>([]);
   const [showAdvanced, setShowAdvanced] = useState(false);
 
-  const [godaddyDomains, setGodaddyDomains] = useState([]);
+  const [godaddyDomains, setGodaddyDomains] = useState<DomainData[]>([]);
 
   const generateAnswer = async (e: any) => {
     e.preventDefault();
