@@ -323,7 +323,7 @@ export default function Home() {
             <>
               <h1 className="text-4xl font-extrabold m-2">Hang tight...</h1>
               <h1 className="text-4xl font-extrabold m-2 text-center">
-                This may take up to 30 seconds 😴
+                This may take up to 10 seconds 😴
               </h1>
               <JellyfishSpinner size={300} />
             </>
