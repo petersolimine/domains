@@ -281,6 +281,28 @@ export default function Home() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/search.svg" />
+
+        <meta property="og:title" content="DomainGarden.io, Find a Domain" />
+
+        <meta
+          property="og:description"
+          content="Easiest way to find domains that are available."
+        />
+        <meta
+          property="og:image"
+          content="https://www.domaingarden.io/twitter_card.png"
+        />
+        <meta property="og:url" content="https://www.domaingarden.io/" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="DomainGarden.io, Find a Domain" />
+        <meta
+          name="twitter:description"
+          content="Finding domains has never been easier."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.domaingarden.io/twitter_card.png"
+        />
       </Head>
       <div className="bg-gradient-to-r from-cyan-500 to-blue-200 bg-opacity-100 min-h-screen">
         <div className="min-h-screen flex justify-center items-center flex-col">
