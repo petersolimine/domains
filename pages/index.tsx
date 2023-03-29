@@ -24,7 +24,7 @@ export default function Home() {
   const [showAdvanced, setShowAdvanced] = useState(false);
 
   const [godaddyDomains, setGodaddyDomains] = useState([
-    { domain: "DomainGarden.ai", price: 6900000000 },
+    { domain: "tryitout.ai", price: 690000000 },
   ]);
 
   const domainData = [
