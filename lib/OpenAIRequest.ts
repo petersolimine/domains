@@ -21,8 +21,7 @@ export async function OpenAIRequest(payload: OpenAIRequestPayload) {
   }
 
   const data = await res.json();
-  console.log(data);
   const text = data.choices[0].message.content;
-  console.log(data.choices[0].message.content);
+  // console.log(data.choices[0].message.content);
   return text;
 }

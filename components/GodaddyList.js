@@ -31,7 +31,6 @@ const GodaddyListItem = ({ domain, price }) => {
         }),
       });
       const data = await response.json();
-      console.log(data);
       const formattedOptions = data.available.map((obj) => {
         const key = Object.keys(obj)[0];
         const value = obj[key];

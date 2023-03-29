@@ -151,7 +151,6 @@ export default function Home() {
         "\nCustom Instructions (read carefully, these are most important): " +
         customInstructions.join(", ");
     }
-    console.log("compound prompt", compound_prompt);
 
     const response = await fetch("/api/generate", {
       method: "POST",
@@ -177,7 +176,6 @@ export default function Home() {
     }
 
     const domains = extractDomains(data);
-    console.log("extracted", domains);
     setLoading(false);
     if (domains.length <= 3) {
       toast.error("Something went wrong on our end.. Please retry!");

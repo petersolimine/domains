@@ -38,7 +38,6 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     const domains = req.body.domains;
     if (!Array.isArray(domains)) {
-      console.log(domains);
       res.status(400).json({ error: "domains must be an array of strings" });
       return;
     }
