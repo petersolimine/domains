@@ -1,16 +1,12 @@
 import { Toaster, toast } from "react-hot-toast";
 import Head from "next/head";
 import Image from "next/image";
-import ListItem from "../components/ListItem";
 import GodaddyListItem from "../components/GodaddyList";
 import React, { useState } from "react";
 import { JellyfishSpinner } from "../components/Spinner";
 import KeywordInput from "../components/KeywordInput";
 import { TLD_PRESETS, CUSTOM_INSTRUCTIONS_PRESETS } from "../lib/Constants";
 
-import godaddy from "../images/godaddy.png";
-import namesilo from "../images/namesilo.png";
-import namecheap from "../images/namecheap.png";
 import Footer from "../components/Footer";
 
 export default function Home() {
@@ -23,90 +19,7 @@ export default function Home() {
   const [tldChips, setTldChips] = useState<string[]>([]);
   const [showAdvanced, setShowAdvanced] = useState(false);
 
-  const [godaddyDomains, setGodaddyDomains] = useState([
-    { domain: "tryitout.ai", price: 49998000000 / 100 },
-  ]);
-
-  const domainData = [
-    {
-      domain: "example.com",
-      price: 12.99,
-      purchaseOptions: [
-        {
-          site: "NameSilo",
-          price: 12.99,
-          logo: namesilo,
-          url: "https://www.namesilo.com/domain/search-domains?query={domain}",
-        },
-        {
-          site: "GoDaddy",
-          price: 13.99,
-          logo: godaddy,
-          url: "https://www.godaddy.com/domains/domain-name-search?checkAvail=1&tmskey=&domainToCheck={domain}",
-        },
-        {
-          site: "NameCheap",
-          price: 1.99,
-          logo: namecheap,
-          url: "https://www.namecheap.com/domains/registration/results/?domain=cannibal{domain}",
-        },
-      ],
-    },
-    {
-      domain: "example.com",
-      price: 12.99,
-      purchaseOptions: [
-        {
-          site: "NameSilo",
-          price: 12.99,
-          logo: namesilo,
-          url: "https://www.namesilo.com/domain/search-domains?query={domain}",
-        },
-        {
-          site: "GoDaddy",
-          price: 13.99,
-          logo: godaddy,
-          url: "https://www.godaddy.com/domains/domain-name-search?checkAvail=1&tmskey=&domainToCheck={domain}",
-        },
-      ],
-    },
-    {
-      domain: "example.com",
-      price: 12.99,
-      purchaseOptions: [
-        {
-          site: "NameSilo",
-          price: 12.99,
-          logo: namesilo,
-          url: "https://www.namesilo.com/domain/search-domains?query={domain}",
-        },
-        {
-          site: "GoDaddy",
-          price: 13.99,
-          logo: godaddy,
-          url: "https://www.godaddy.com/domains/domain-name-search?checkAvail=1&tmskey=&domainToCheck={domain}",
-        },
-      ],
-    },
-    {
-      domain: "example.com",
-      price: 12.99,
-      purchaseOptions: [
-        {
-          site: "NameSilo",
-          price: 12.99,
-          logo: namesilo,
-          url: "https://www.namesilo.com/domain/search-domains?query={domain}",
-        },
-        {
-          site: "GoDaddy",
-          price: 13.99,
-          logo: godaddy,
-          url: "https://www.godaddy.com/domains/domain-name-search?checkAvail=1&tmskey=&domainToCheck={domain}",
-        },
-      ],
-    },
-  ];
+  const [godaddyDomains, setGodaddyDomains] = useState([]);
 
   const generateAnswer = async (e: any) => {
     e.preventDefault();
@@ -304,13 +217,13 @@ export default function Home() {
           content="https://www.domaingarden.io/twitter_card.png"
         />
       </Head>
-      <div className="bg-gradient-to-r from-cyan-500 to-blue-200 bg-opacity-100 min-h-screen">
+      <div className="px-2">
         <div className="min-h-screen flex justify-center items-center flex-col">
           <div className="flex flex-row items-center space-x-3">
             <Image src="/search.svg" alt="Search" width={90} height={90} />
             <Image src="/robot.svg" alt="Robot" width={100} height={100} />
           </div>
-          <h1 className="text-4xl font-extrabold mt-4">DomainGarden.io </h1>
+          <h1 className="text-4xl font-extrabold mt-4">DomainGarden.io</h1>
           <h1 className="text-xl font mb-8 mt-2">
             The easiest way to find available domains
           </h1>
@@ -390,7 +303,7 @@ export default function Home() {
             </>
           )}
 
-          {!loading && (
+          {!loading && godaddyDomains.length !== 0 && (
             <p className="flex flex-col text-xl md:flex-row items-stretch md:items-center mx-auto mt-8 w-full max-w-screen-lg gap-4 sm:p-0 self-start font-medium mx-auto sm:w-full max-w-screen-lg">
               Available domains:
             </p>
