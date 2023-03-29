@@ -13,15 +13,6 @@ import namesilo from "../images/namesilo.png";
 import namecheap from "../images/namecheap.png";
 import Footer from "../components/Footer";
 
-const AdvancedInstructionsPresets = [
-  "car",
-  "cat",
-  "cantelope",
-  "bear",
-  "forest",
-  "rainbow",
-];
-
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [prompt, setPrompt] = useState("");
@@ -29,13 +20,7 @@ export default function Home() {
   const [keywordChips, setKeywordChips] = useState<string[]>([]);
   const [similarDomainChips, setSimilarDomainChips] = useState<string[]>([]);
   const [customInstructions, setCustomInstructions] = useState<string[]>([]);
-  const [tldChips, setTldChips] = useState<string[]>([
-    "COM",
-    "IO",
-    "ORG",
-    "NET",
-    "BIZ",
-  ]);
+  const [tldChips, setTldChips] = useState<string[]>([]);
   const [showAdvanced, setShowAdvanced] = useState(false);
 
   const [godaddyDomains, setGodaddyDomains] = useState([
@@ -305,9 +290,12 @@ export default function Home() {
             <Image src="/search.svg" alt="Search" width={90} height={90} />
             <Image src="/robot.svg" alt="Robot" width={100} height={100} />
           </div>
-          <h1 className="text-4xl font-extrabold m-4">Domain Name Finder</h1>
+          <h1 className="text-4xl font-extrabold mt-4">DomainGarden.io </h1>
+          <h1 className="text-xl font mb-8 mt-2">
+            The easiest way to find available domains
+          </h1>
           {/* <div className="flex mt-10 items-center space-x-3"> */}
-          <p className="self-start font-medium mx-auto sm:w-full max-w-screen-lg">
+          <p className="self-start text-xl font-medium mx-auto sm:w-full max-w-screen-lg">
             Describe your product or company{" "}
             <span className="text-slate-400">(two to four sentences).</span>
           </p>
@@ -383,7 +371,7 @@ export default function Home() {
           )}
 
           {!loading && (
-            <p className="flex flex-col md:flex-row items-stretch md:items-center mx-auto mt-8 w-full max-w-screen-lg gap-4 sm:p-0 self-start font-medium mx-auto sm:w-full max-w-screen-lg">
+            <p className="flex flex-col text-xl md:flex-row items-stretch md:items-center mx-auto mt-8 w-full max-w-screen-lg gap-4 sm:p-0 self-start font-medium mx-auto sm:w-full max-w-screen-lg">
               Available domains:
             </p>
           )}
