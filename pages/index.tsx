@@ -38,29 +38,29 @@ export default function Home() {
 
     if (
       !(
-        keywordChips.length === 0 &&
-        similarDomainChips.length === 0 &&
-        tldChips.length === 0 &&
-        customInstructions.length === 0
+        keywordChips?.length === 0 &&
+        similarDomainChips?.length === 0 &&
+        tldChips?.length === 0 &&
+        customInstructions?.length === 0
       )
     ) {
       compound_prompt += "\nCONSTRAINTS:\n";
     }
 
     // add advanced settings to the base prompt (i.e. 'compound prompt');
-    if (keywordChips.length !== 0) {
+    if (keywordChips?.length !== 0) {
       compound_prompt += "\nKeywords to consider: " + keywordChips.join(", ");
     }
-    if (similarDomainChips.length !== 0) {
+    if (similarDomainChips?.length !== 0) {
       compound_prompt +=
         "\nGood example(s) to consider: " + similarDomainChips.join(", ");
     }
-    if (tldChips.length !== 0) {
+    if (tldChips?.length !== 0) {
       compound_prompt +=
         "Here's a list of Domain endings (aka TLDs) that the user likes: " +
         tldChips.join(", ");
     }
-    if (customInstructions.length !== 0) {
+    if (customInstructions?.length !== 0) {
       // first, remove every '.' from the custom instructions
       customInstructions.forEach((instruction, index) => {
         customInstructions[index] = instruction.replace(".", "");
@@ -95,7 +95,7 @@ export default function Home() {
 
     const domains = extractDomains(data);
     setLoading(false);
-    if (domains.length <= 3) {
+    if (domains?.length <= 3) {
       toast.error("Something went wrong on our end.. Please retry!");
       return;
     }
@@ -120,7 +120,7 @@ export default function Home() {
       const domainParts = domain.split(".");
 
       if (
-        domainParts.length >= 2 &&
+        domainParts?.length >= 2 &&
         isValidTLD(domainParts[domainParts.length - 1])
       ) {
         const domainName = domainParts.slice(0, -1).join(".");
@@ -128,7 +128,7 @@ export default function Home() {
         // Check for valid domain name characters and length
         if (
           /^([a-z0-9](?:[a-z0-9-]*[a-z0-9])?)$/i.test(domainName) &&
-          domainName.length <= 63
+          domainName?.length <= 63
         ) {
           domains.push(domain);
         }
@@ -313,7 +313,7 @@ export default function Home() {
             </>
           )}
 
-          {!loading && godaddyDomains.length !== 0 && (
+          {!loading && godaddyDomains?.length !== 0 && (
             <p className="flex flex-col text-xl md:flex-row items-stretch md:items-center mx-auto mt-8 w-full max-w-screen-lg gap-4 sm:p-0 self-start font-medium mx-auto sm:w-full max-w-screen-lg">
               Available domains:
             </p>
